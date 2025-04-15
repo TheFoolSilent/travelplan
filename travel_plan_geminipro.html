@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都出发豫见郑开洛三日游 (4月29日-5月2日)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #0056b3; /* A calm blue */
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 1.5em;
+        }
+        h1 {
+            text-align: center;
+            color: #003d80; /* Darker blue for main title */
+            margin-bottom: 1em;
+        }
+        strong {
+            color: #d9534f; /* Highlight important notes */
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        .map-container {
+            width: 100%;
+            height: 450px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .important-note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffeeba;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .day-section {
+            margin-bottom: 2em;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        .day-section h2 {
+            margin-top: 0;
+            color: #17a2b8; /* Teal for day titles */
+        }
+        .transport-options, .attractions, .food-suggestions, .accommodation {
+            margin-top: 1em;
+        }
+        .transport-options strong, .attractions strong, .food-suggestions strong, .accommodation strong {
+            color: #5a6268; /* Grey for sub-section titles */
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        #mapLog {
+            display: none; /* 隐藏日志区域 */
+        }
+    </style>
+    <!-- Gaode Maps Security Key Configuration -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: '2f7d35abcd04429b1897b5b8f208383e', // Replace YYYYYYY with your actual Security Key
+        }
+    </script>
+    <!-- Gaode Maps API -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=a21514b91592e0af9f6a1ce3cfee1650&plugin=AMap.Geocoder"></script> <!-- Replace XXXXXXX with your actual API Key -->
+</head>
+<body>
+    <div class="container">
+        <h1>成都出发豫见郑开洛三日游 (4月29日-5月2日) - 详细规划</h1>
+
+        <div class="important-note">
+            <strong>重要提示:</strong> 此行程恰逢五一劳动节假期，是中国旅游最高峰之一。请<strong>务必立即预订</strong>所有往返及城市间交通票、每晚住宿，并提前在线预约/购买热门景点门票！预计各处都将人山人海，请做好心理准备并预留充足时间。
+        </div>
+
+        <h2>行程概览地图</h2>
+        <div style="margin-bottom: 10px;">
+            <button id="showAllBtn">显示全部</button>
+            <button id="showDay1Btn">第 1 天</button>
+            <button id="showDay2Btn">第 2 天</button>
+            <button id="showDay3Btn">第 3 天</button>
+        </div>
+        <div id="mapContainer" class="map-container"></div>
+        <div id="mapLog" style="font-size: 0.8em; color: grey; margin-top: 5px;">地图加载日志:</div>
+
+
+        <hr>
+
+        <div class="day-section">
+            <h2>第0晚：4月29日 (星期二) - 出发前往郑州</h2>
+            <h3>行程安排</h3>
+            <ul>
+                <li>18:00后：从成都出发。</li>
+            </ul>
+            <div class="transport-options">
+                <h3>交通建议 (三选一，立即预订！)</h3>
+                <ol>
+                    <li><strong>高铁:</strong> 成都东站 -> 郑州东站。
+                        <ul><li><em>示例:</em> G348 (约18:05-23:38) 或 G2210 (约18:55-00:35+1)。</li><li><em>抵达:</em> 郑州东站 (高铁站)。</li></ul>
+                    </li>
+                    <li><strong>普速卧铺:</strong> 成都站/成都西站 -> 郑州站。
+                        <ul><li><em>示例:</em> Z390 (约21:37-07:15+1)。</li><li><em>抵达:</em> 郑州站 (普通火车站)。</li></ul>
+                    </li>
+                    <li><strong>飞机:</strong> 成都双流(CTU)/天府(TFU) -> 郑州新郑(CGO)。
+                        <ul><li><em>示例:</em> 晚间航班，飞行约1.5-2小时。</li><li><em>抵达:</em> 新郑国际机场，需乘机场大巴/地铁进市区。</li></ul>
+                    </li>
+                </ol>
+            </div>
+            <div class="accommodation">
+                <h3>住宿</h3>
+                <ul><li>根据抵达站点预订酒店 (郑州东站/郑州站/市区)。<strong>立即预订！</strong></li></ul>
+            </div>
+            <h3>天气与穿衣 (抵达郑州时)</h3>
+            <ul>
+                <li><strong>天气预报 (参考):</strong> 预计夜间气温约15-18°C。 <em>(请在出发前查询实时天气)</em></li>
+                <li><strong>穿衣建议:</strong> 抵达时穿着舒适的长裤、T恤加一件方便穿脱的外套（如夹克、薄风衣）。</li>
+            </ul>
+            <div class="food-suggestions">
+                <h3>餐饮建议</h3>
+                <ul><li>晚餐可在成都解决，或在交通工具上用餐。</li></ul>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <h2>第1天：4月30日 (星期三) - 郑州 & 前往开封</h2>
+            <h3>行程安排</h3>
+            <ul>
+                <li>上午 (约09:00 - 12:30): 参观 <strong>河南博物院</strong> (<strong>务必提前预约！</strong>)。</li>
+                <li>中午 (约12:30 - 13:30): 午餐。</li>
+                <li>下午 (约13:30 - 16:30): 游览 <strong>二七广场</strong> & <strong>“大玉米”楼</strong> (千玺广场)。</li>
+                <li>傍晚 (约17:00 - 18:00): 前往郑州东站，乘高铁 -> 开封北站。</li>
+                <li>晚上: 入住开封酒店，逛 <strong>鼓楼夜市</strong>。</li>
+            </ul>
+            <h3>天气与穿衣</h3>
+            <ul>
+                <li><strong>天气预报 (参考):</strong> 预计晴间多云，气温约 16°C - 28°C。日间阳光可能较强。 <em>(请在出发前查询实时天气)</em></li>
+                <li><strong>穿衣建议:</strong>
+                    <ul>
+                        <li>白天 T恤或薄长袖衬衫。</li>
+                        <li>备一件轻薄外套或防晒衣，早晚或室内空调环境可能需要。</li>
+                        <li><strong>舒适的步行鞋</strong> (博物馆和市区步行较多)。</li>
+                        <li>可佩戴帽子、太阳镜防晒。</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>景点间交通</h3>
+            <ul>
+                <li><strong>酒店 -> 河南博物院:</strong>
+                    <ul><li><em>地铁:</em> 查询酒店附近地铁站，乘坐至 <strong>地铁2号线关虎屯站</strong>，步行前往。</li><li><em>出租车/网约车(滴滴):</em> 直接打车前往。</li></ul>
+                </li>
+                <li><strong>河南博物院 -> 二七广场/大玉米楼:</strong>
+                    <ul><li><em>地铁:</em> 从 <strong>关虎屯站</strong> 乘 <strong>地铁2号线</strong> 到 <strong>紫荆山站</strong>，换乘 <strong>地铁1号线</strong> 到 <strong>二七广场站</strong> 或 <strong>会展中心站</strong> (去大玉米楼)。</li><li><em>出租车/网约车:</em> 打车前往。二七广场与大玉米楼之间可步行或乘1站地铁。</li></ul>
+                </li>
+                <li><strong>二七广场/大玉米楼区域 -> 郑州东站:</strong>
+                    <ul><li><em>地铁:</em> 乘坐 <strong>地铁1号线</strong> 直达 <strong>郑州东站</strong>。</li></ul>
+                </li>
+            </ul>
+            <div class="food-suggestions">
+                <h3>餐饮建议</h3>
+                <ul>
+                    <li><strong>早餐:</strong> (若乘卧铺抵达) 郑州站附近尝 <strong>胡辣汤</strong> 配油条/包子。(若住酒店) 酒店早餐。</li>
+                    <li><strong>午餐:</strong> 博物院或二七广场附近，推荐品尝 <strong>河南烩面</strong> (如萧记、合记)。</li>
+                    <li><strong>晚餐:</strong> 开封 <strong>鼓楼夜市</strong> 或 <strong>西司夜市</strong>，必试 <strong>开封灌汤包、炒凉粉、桶子鸡</strong>，以及各种当地小吃。</li>
+                </ul>
+            </div>
+            <div class="accommodation">
+                <h3>住宿</h3>
+                <ul><li>开封酒店 (建议靠近景区或鼓楼)。<strong>立即预订！</strong></li></ul>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <h2>第2天：5月1日 (星期四) - 开封 & 前往洛阳</h2>
+            <h3>行程安排</h3>
+            <ul>
+                <li>上午 (约08:30 - 13:00): 游览 <strong>清明上河园</strong> (<strong>务必提前购票！</strong>)。</li>
+                <li>中午 (约13:00 - 14:00): 午餐。</li>
+                <li>下午 (约14:00 - 17:00): 参观 <strong>开封府</strong> & <strong>大相国寺</strong>。</li>
+                <li>傍晚 (约17:00 - 18:00): 前往开封北站，乘高铁 -> 洛阳龙门站。</li>
+                <li>晚上: 入住洛阳酒店。</li>
+            </ul>
+            <h3>天气与穿衣</h3>
+            <ul>
+                <li><strong>天气预报 (参考):</strong> 预计多云，傍晚可能转小雨，气温约 17°C - 25°C。 <em>(请在出发前查询实时天气)</em></li>
+                <li><strong>穿衣建议:</strong>
+                    <ul>
+                        <li>T恤或薄长袖 + 轻薄外套。</li>
+                        <li><strong>舒适的步行鞋</strong> (清明上河园非常大)。</li>
+                        <li><strong>携带雨具</strong> (雨伞或轻便雨衣)。</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>景点间交通</h3>
+            <ul>
+                <li><strong>酒店 -> 清明上河园:</strong>
+                    <ul><li><em>公交车:</em> 查询酒店附近前往清明上河园的公交线路 (如 1路、15路、20路、30路等，请用地图App确认)。</li><li><em>出租车/网约车:</em> 直接打车前往。</li></ul>
+                </li>
+                <li><strong>清明上河园 -> 开封府/大相国寺:</strong>
+                    <ul><li><em>步行:</em> 两者相距不远，从清明上河园步行至开封府约20-30分钟，开封府到大相国寺约15分钟。</li><li><em>公交/出租车:</em> 也可乘坐短途公交或打车。</li></ul>
+                </li>
+                <li><strong>开封府/大相国寺 -> 开封北站:</strong>
+                    <ul><li><em>公交车:</em> 查询前往开封北站的公交线路 (可能需要换乘)。</li><li><em>出租车/网约车:</em> 打车前往，预留至少30-40分钟车程。</li></ul>
+                </li>
+            </ul>
+            <div class="food-suggestions">
+                <h3>餐饮建议</h3>
+                <ul>
+                    <li><strong>早餐:</strong> 酒店或街边早餐店。</li>
+                    <li><strong>午餐:</strong> 清明上河园内或外，推荐品尝开封名菜 <strong>鲤鱼焙面</strong> 或再尝 <strong>灌汤包</strong> (如第一楼)。</li>
+                    <li><strong>晚餐:</strong> 抵达洛阳后，在酒店附近品尝 <strong>洛阳汤馆</strong> (牛肉汤、羊肉汤等)，体验当地汤文化。可考虑 <strong>洛阳水席</strong> (需预订，适合多人)。</li>
+                </ul>
+            </div>
+            <div class="accommodation">
+                <h3>住宿</h3>
+                <ul><li>洛阳酒店 (建议靠近龙门站或市区地铁沿线)。<strong>立即预订！</strong></li></ul>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <h2>第3天：5月2日 (星期五) - 洛阳 & 返回成都</h2>
+            <h3>行程安排</h3>
+            <ul>
+                <li>上午 (约08:00 - 12:00): <strong>尽早</strong> 参观 <strong>龙门石窟</strong> (<strong>务必提前购票！</strong>)。</li>
+                <li>中午 (约12:00 - 13:00): 午餐。</li>
+                <li>下午 (约13:30 - 16:00/16:30): 参观 <strong>白马寺</strong>。</li>
+                <li>傍晚/晚上: 前往洛阳龙门站，乘高铁 -> 成都东站。</li>
+            </ul>
+            <h3>天气与穿衣</h3>
+            <ul>
+                <li><strong>天气预报 (参考):</strong> 预计小雨转晴，气温约 15°C - 26°C。上午可能微凉，下午转晴后舒适。 <em>(请在出发前查询实时天气)</em></li>
+                <li><strong>穿衣建议:</strong>
+                    <ul>
+                        <li><strong>极其舒适的步行鞋！</strong> (龙门石窟和白马寺都需要大量步行)。</li>
+                        <li>透气的 T恤 + 轻便外套 (方便根据天气和活动量穿脱)。</li>
+                        <li>若上午有雨需雨具，下午转晴注意防晒。</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>景点间交通</h3>
+            <ul>
+                <li><strong>酒店 -> 龙门石窟:</strong>
+                    <ul><li><em>公交车:</em> 若住龙门站附近，可乘 K81路 等直达；若住市区，查询相应公交线路。</li><li><em>出租车/网约车:</em> 打车前往。</li></ul>
+                </li>
+                <li><strong>龙门石窟 -> 白马寺:</strong>
+                    <ul><li><em>出租车/网约车:</em> <strong>推荐此方式</strong>，最为省时直接，车程约40-60分钟。</li><li><em>公交车:</em> 耗时较长，通常需要换乘。例如：先从龙门石窟区域乘公交 (如 67路、K81路) 到达市区某个换乘点 (如 洛阳站 或 王城广场附近)，再换乘前往白马寺的公交 (如 56路、58路)。<strong>务必使用地图App规划并预留充足时间 (至少1.5-2小时)</strong>。</li></ul>
+                </li>
+                <li><strong>白马寺 -> 洛阳龙门站:</strong>
+                    <ul><li><em>出租车/网约车:</em> <strong>推荐此方式</strong>，确保能准时到达高铁站，车程约需1小时左右。</li><li><em>公交车:</em> 耗时较长且可能需要换乘，不建议赶火车时乘坐。</li></ul>
+                </li>
+            </ul>
+            <div class="food-suggestions">
+                <h3>餐饮建议</h3>
+                <ul>
+                    <li><strong>早餐:</strong> 酒店或洛阳汤馆。</li>
+                    <li><strong>午餐:</strong> 龙门石窟附近选择有限，可简单解决；或在前往白马寺途中/市区用餐。可再试 <strong>洛阳汤类</strong> 或 <strong>浆面条</strong>。</li>
+                    <li><strong>晚餐:</strong> 高铁上解决。可在洛阳龙门站购买快餐/零食，或提前备好。</li>
+                </ul>
+            </div>
+            <div class="transport-options">
+                <h3>返程交通 (二选一，立即预订！)</h3>
+                <ol>
+                    <li><strong>高铁 (推荐):</strong> 洛阳龙门站 -> 成都东站。
+                        <ul><li><em>示例:</em> 选择 <strong>17:30之后</strong> 的车次，如 G347 (约17:38-23:08) 或 G2209 (约18:16-23:58)。</li></ul>
+                    </li>
+                    <li><strong>飞机:</strong> 洛阳北郊(LYA) -> 成都(CTU/TFU)。
+                        <ul><li><em>注意:</em> 若选飞机，需 <strong>15:30左右</strong> 从白马寺出发去机场，会压缩游览时间。</li></ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <hr>
+        <div class="important-note">
+            <strong>再次提醒:</strong>
+            <ul>
+                <li><strong>立即行动：</strong> 预订交通、住宿、门票。</li>
+                <li><strong>实时查询：</strong> 出发前务必查询最新的天气预报、火车/飞机时刻表、景点开放时间及预约政策。</li>
+                <li><strong>交通App：</strong> 准备好地图导航App（如百度地图、高德地图）查询公交、地铁路线。</li>
+                <li><strong>必备物品：</strong> 身份证件、充电宝、常用药品、舒适鞋、雨具、防晒用品。</li>
+                <li><strong>保持耐心：</strong> 假期人多拥挤，保持良好心态，享受旅程！</li>
+            </ul>
+            <p>祝您河南之行愉快顺利！</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // --- Map Initialization ---
+        var map = new AMap.Map('mapContainer', {
+            resizeEnable: true,
+            zoom: 12, // Zoom adjusted for Henan focus
+            center: [113.66, 34.75] // Center roughly on Zhengzhou
+        });
+
+        var geocoder = new AMap.Geocoder({
+            city: "全国" // Use nationwide geocoding
+        });
+
+        // --- Data Definitions ---
+        
+        // 地点数据，包含坐标和参观时间
+        const day1Locations = [
+            { name: "河南博物院", city: "郑州", title: "Day 1: 河南博物院", position: [113.681, 34.791], stayTime: "3.5小时" },
+            { name: "二七广场", city: "郑州", title: "Day 1: 二七广场", position: [113.665, 34.754], stayTime: "1.5小时" },
+            { name: "千玺广场", city: "郑州", title: "Day 1: 大玉米楼", position: [113.678, 34.748], stayTime: "1.5小时" },
+            { name: "郑州东站", city: "郑州", title: "Day 1: 郑州东站", position: [113.715, 34.749], stayTime: "0.5小时" },
+            { name: "开封北站", city: "开封", title: "Day 1: 开封北站", position: [114.346, 34.858], stayTime: "0.5小时" },
+            { name: "开封市鼓楼广场", city: "开封", title: "Day 1: 鼓楼夜市附近", position: [114.351, 34.797], stayTime: "2小时" }
+        ];
+        const day2Locations = [
+            { name: "清明上河园", city: "开封", title: "Day 2: 清明上河园", position: [114.329, 34.807], stayTime: "4.5小时" },
+            { name: "开封府", city: "开封", title: "Day 2: 开封府", position: [114.341, 34.791], stayTime: "2小时" },
+            { name: "大相国寺", city: "开封", title: "Day 2: 大相国寺", position: [114.354, 34.791], stayTime: "1.5小时" },
+            { name: "开封北站", city: "开封", title: "Day 2: 开封北站", position: [114.346, 34.858], stayTime: "0.5小时" },
+            { name: "洛阳龙门站", city: "洛阳", title: "Day 2: 洛阳龙门站", position: [112.454, 34.618], stayTime: "0.5小时" }
+        ];
+        const day3Locations = [
+            { name: "龙门石窟", city: "洛阳", title: "Day 3: 龙门石窟", position: [112.471, 34.555], stayTime: "4小时" },
+            { name: "白马寺", city: "洛阳", title: "Day 3: 白马寺", position: [112.599, 34.723], stayTime: "2.5小时" },
+            { name: "洛阳龙门站", city: "洛阳", title: "Day 3: 洛阳龙门站 (返程)", position: [112.454, 34.618], stayTime: "0.5小时" }
+        ];
+        
+
+        // --- Global Storage for Map Elements ---
+        let day1MapElements = []; // Stores { marker: AMap.Marker, polyline: AMap.Polyline | null }
+        let day2MapElements = [];
+        let day3MapElements = [];
+        let allMapMarkers = []; // Just markers for fitting view
+
+        // --- Utility for logging ---
+        function logToMapDiv(message) {
+            console.log(message); // Also log to console
+            const logDiv = document.getElementById('mapLog');
+            if (logDiv) {
+                const time = new Date().toLocaleTimeString();
+                logDiv.innerHTML += `<br>[${time}] ${message}`;
+                logDiv.scrollTop = logDiv.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        // --- Core Map Functions ---
+        // Function to geocode, add marker, and return data object
+        function geocodeAndCreateMarker(locationData) {
+            return new Promise((resolve) => {
+                if (locationData.position) {
+                    const lnglat = locationData.position;
+                    const marker = new AMap.Marker({
+                        position: lnglat,
+                        title: `${locationData.name} (${locationData.title})`,
+                        map: map // 直接添加到地图
+                    });
+                    marker.on('click', function() {
+                        const infoWindow = new AMap.InfoWindow({
+                            content: `<h3>${locationData.name}</h3><p>${locationData.title}</p><p>参观时间: ${locationData.stayTime}</p>`
+                        });
+                        infoWindow.open(map, marker.getPosition());
+                    });
+                    logToMapDiv(`Marker created for ${locationData.name}`);
+                    resolve({ lnglat: lnglat, marker: marker });
+                } else {
+                    logToMapDiv(`No position for ${locationData.name}`);
+                    resolve(null);
+                }
+            });
+        }
+
+        // Function to draw a polyline for a day's route
+        function createPolyline(pathData, color) {
+            const validPoints = pathData.filter(p => p && p.lnglat).map(p => p.lnglat); // Extract valid coordinates
+            if (validPoints.length >= 2) {
+                const polyline = new AMap.Polyline({
+                    path: validPoints,
+                    borderWeight: 2,
+                    strokeColor: color || '#0056b3',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 6,
+                    strokeStyle: "solid",
+                    lineJoin: 'round',
+                    lineCap: 'round',
+                    showDir: true // 显示方向箭头
+                });
+                logToMapDiv(`Polyline created with ${validPoints.length} points.`);
+                return polyline; // Return the polyline object
+            } else {
+                 logToMapDiv(`Not enough valid points (${validPoints.length}) to create polyline.`);
+                 return null; // Not enough points
+            }
+        }
+
+        // Process locations for a single day
+        async function processDayRoute(locations, color) {
+            const mapElements = [];
+            const geocodedData = await Promise.all(locations.map(loc => geocodeAndCreateMarker(loc)));
+            const validData = geocodedData.filter(d => d !== null);
+
+            // Add markers to the list
+            validData.forEach(d => mapElements.push(d.marker));
+            allMapMarkers.push(...validData.map(d => d.marker)); // Add to global marker list
+
+            // Create polyline
+            const polyline = createPolyline(validData, color);
+            if (polyline) {
+                mapElements.push(polyline);
+            }
+            return mapElements;
+        }
+
+        // --- Visibility Control Functions ---
+        function hideElements(elementsArray) {
+            if (!elementsArray || elementsArray.length === 0) {
+                logToMapDiv("hideElements called with empty or invalid array.");
+                return;
+            }
+            logToMapDiv(`Hiding ${elementsArray.length} elements.`);
+            try {
+                map.remove(elementsArray); // Remove from map instead of hide
+            } catch (e) {
+                logToMapDiv(`Error removing elements: ${e}`);
+                console.error("Error removing elements:", e, elementsArray);
+            }
+        }
+
+        function showElements(elementsArray) {
+             if (!elementsArray || elementsArray.length === 0) {
+                logToMapDiv("showElements called with empty or invalid array.");
+                return;
+            }
+            logToMapDiv(`Showing ${elementsArray.length} elements.`);
+             try {
+                map.add(elementsArray); // Add elements to map
+            } catch (e) {
+                logToMapDiv(`Error adding elements: ${e}`);
+                console.error("Error adding elements:", e, elementsArray);
+            }
+        }
+
+        function displayRoute(dayNumber) {
+            logToMapDiv(`Displaying route for Day ${dayNumber}`);
+            // Remove all potentially visible elements first
+            hideElements(day1MapElements);
+            hideElements(day2MapElements);
+            hideElements(day3MapElements);
+
+            let elementsToShow = [];
+            let markersToShow = []; // Need markers separately for setFitView
+
+            if (dayNumber === 1) {
+                elementsToShow = day1MapElements;
+            } else if (dayNumber === 2) {
+                elementsToShow = day2MapElements;
+            } else if (dayNumber === 3) {
+                elementsToShow = day3MapElements;
+            }
+
+            showElements(elementsToShow);
+            markersToShow = elementsToShow.filter(el => el.CLASS_NAME === 'AMap.Marker');
+
+            // Adjust map view to fit the markers of the selected day
+            if (markersToShow.length > 0) {
+                map.setFitView(markersToShow, false, [60, 60, 60, 60], 12); // Add padding, maxZoom
+                 logToMapDiv(`Adjusted view for Day ${dayNumber}.`);
+            } else {
+                logToMapDiv(`No markers to fit view for Day ${dayNumber}.`);
+            }
+        }
+
+        function displayAllRoutes() {
+            logToMapDiv("Displaying all routes");
+             // Remove all potentially visible elements first
+            hideElements(day1MapElements);
+            hideElements(day2MapElements);
+            hideElements(day3MapElements);
+
+            // Show all elements
+            showElements(day1MapElements);
+            showElements(day2MapElements);
+            showElements(day3MapElements);
+
+            // Adjust map view to fit all markers
+            if (allMapMarkers.length > 0) {
+                map.setFitView(allMapMarkers, false, [60, 60, 60, 60], 12); // Add padding, maxZoom
+                logToMapDiv("Adjusted view for all markers.");
+            } else {
+                 logToMapDiv("No markers to fit view for all routes.");
+            }
+        }
+
+        // --- Event Listeners ---
+        function addEventListeners() {
+            document.getElementById('showAllBtn').addEventListener('click', displayAllRoutes);
+            document.getElementById('showDay1Btn').addEventListener('click', () => displayRoute(1));
+            document.getElementById('showDay2Btn').addEventListener('click', () => displayRoute(2));
+            document.getElementById('showDay3Btn').addEventListener('click', () => displayRoute(3));
+            logToMapDiv("Button listeners added.");
+        }
+
+        // --- Main Execution ---
+        async function initializeMapFeatures() {
+            try {
+                logToMapDiv("Processing Day 1 route...");
+                day1MapElements = await processDayRoute(day1Locations, '#FF5733'); // Reddish
+
+                logToMapDiv("Processing Day 2 route...");
+                day2MapElements = await processDayRoute(day2Locations, '#33FF57'); // Greenish
+
+                logToMapDiv("Processing Day 3 route...");
+                day3MapElements = await processDayRoute(day3Locations, '#3357FF'); // Bluish
+
+                logToMapDiv("All routes processed. Adding controls.");
+                addEventListeners(); // Setup buttons after elements are created
+                displayAllRoutes(); // Show all routes initially
+
+            } catch (error) {
+                console.error("Error initializing map features:", error);
+                logToMapDiv(`FATAL ERROR initializing map features: ${error}`);
+            }
+        }
+
+        // Start processing locations once the map API is ready
+        map.on('complete', function() {
+             logToMapDiv("Map API loaded completely.");
+
+             // Check if Geocoder plugin loaded
+             if (typeof AMap.Geocoder === 'undefined') {
+                 logToMapDiv("ERROR: AMap.Geocoder plugin not loaded!");
+                 console.error("AMap.Geocoder is undefined. Check API URL and key permissions.");
+                 return; // Stop if plugin missing
+             } else {
+                 logToMapDiv("AMap.Geocoder plugin seems loaded.");
+             }
+
+             // Initialize features after a short delay
+             logToMapDiv("Map complete. Scheduling feature initialization...");
+             setTimeout(() => {
+                 logToMapDiv("Starting initializeMapFeatures after delay.");
+                 initializeMapFeatures();
+             }, 100); // 100ms delay
+
+        });
+
+    </script>
+</body>
+</html>
