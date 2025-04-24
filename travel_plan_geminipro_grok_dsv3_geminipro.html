@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都出发豫见郑开洛三日游 (4月29日-5月2日) - 温馨版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom styles for specific elements if needed */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fdf6e3; /* Warm background */
+        }
+        .map-container {
+            width: 100%;
+            height: 450px; /* Keep map height */
+            border-radius: 0.5rem; /* Rounded corners */
+            border: 1px solid #e5e7eb; /* Light border */
+        }
+        /* Keep existing journal styles */
+        .travel-journal {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f9f5f0 0%, #f0e6d6 100%);
+            border-radius: 12px;
+            border: 1px solid #e4d9c3;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        .journal-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; border-bottom: 2px dashed #d4c9b8; padding-bottom: 10px; }
+        .journal-header h3 { margin: 0; color: #7a5c50; font-size: 1.3em; }
+        .journal-date { color: #a08679; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        .journal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .journal-image { width: 100%; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .journal-image:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .journal-desc { padding: 10px; font-size: 0.95em; line-height: 1.6; color: #5a4a42; }
+        .journal-desc p { margin: 12px 0; padding-left: 10px; border-left: 3px solid #d4a373; }
+        .journal-section { margin-bottom: 18px; padding-bottom: 15px; border-bottom: 1px dashed #e0d6c2; }
+        .journal-section h4 { color: #8c6a56; margin: 0 0 8px 0; font-size: 1.05em; display: flex; align-items: center; }
+        .journal-section ul { margin: 0; padding-left: 20px; list-style: none; } /* Remove default list style */
+        .journal-section li { margin-bottom: 6px; line-height: 1.5; position: relative; padding-left: 1.2em; }
+        .journal-section li::before { /* Custom bullet points */
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4a373; /* Warm color for bullets */
+            font-weight: bold;
+        }
+        .spicy-level { display: inline-block; margin: 0 5px; font-size: 0.9em; }
+        .tips { background-color: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; border-left: 3px solid #d4a373; }
+        .tips p { margin: 8px 0; font-style: italic; }
+        @media (max-width: 768px) {
+            .journal-grid { grid-template-columns: 1fr; }
+            .journal-desc { padding: 15px 5px; }
+            .journal-section { margin-bottom: 15px; }
+        }
+        /* Lightbox styles */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
+        #lightbox-img { max-height: 80vh; max-width: 90vw; border: 3px solid white; box-shadow: 0 0 20px rgba(0,0,0,0.6); object-fit: contain; }
+        #lightbox-caption { color: white; margin-top: 15px; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        .close { position: absolute; top: -40px; right: 0; color: white; font-size: 35px; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+        .close:hover { color: #ccc; }
+        /* Custom card styles */
+        .day-card {
+            background-color: #fffaf0; /* Creamy background for cards */
+            border: 1px solid #f3e9d2; /* Soft border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .day-card h2 {
+            color: #8c6a56; /* Warm brown for titles */
+            border-bottom: 2px solid #e0d6c2;
+        }
+        .info-section h3 {
+            color: #a08679; /* Lighter brown for subtitles */
+            border-bottom: none;
+            font-size: 1.1em;
+            margin-bottom: 0.5rem;
+        }
+        .info-item {
+            display: flex;
+            align-items: center; /* Vertically center icon and text */
+            margin-bottom: 0.5rem;
+            color: #5a4a42; /* Darker text for readability */
+        }
+        .info-item i {
+            color: #d4a373; /* Warm icon color */
+            margin-right: 0.75rem; /* Space between icon and text */
+            width: 1.5em; /* Fixed width for alignment */
+            text-align: center;
+        }
+        .info-item ul {
+            padding-left: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .info-item li {
+            margin-bottom: 0.25rem;
+        }
+        .info-item strong {
+            color: #8c6a56; /* Consistent warm color for emphasis */
+        }
+        /* Important Notes styling */
+        .important-note-section {
+            background-color: #fff8e1; /* Light yellow */
+            border-left: 5px solid #ffca28; /* Amber border */
+            padding: 1rem 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+        }
+        .important-note-section h2 {
+            color: #c79100; /* Darker yellow */
+            margin-top: 0;
+            border-bottom: 1px solid #ffe082;
+        }
+        .important-note-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .important-note-section th, .important-note-section td {
+            border: 1px solid #ffe082;
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+        }
+        .important-note-section th {
+            background-color: #fff1cc;
+        }
+    </style>
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: '2f7d35abcd04429b1897b5b8f208383e', // Replace YYYYYYY with your actual Security Key
+        }
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=a21514b91592e0af9f6a1ce3cfee1650&plugin=AMap.Geocoder"></script> </head>
+<body class="text-gray-800">
+    <div class="container mx-auto max-w-4xl p-4 md:p-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-amber-800 mb-6 md:mb-10">成都出发豫见郑开洛三日游 (4月29日-5月2日)</h1>
+
+        <div class="mb-8 p-4 bg-white rounded-lg shadow">
+            <h2 class="text-2xl font-semibold text-amber-700 mb-4 border-b pb-2">行程概览地图</h2>
+            <div class="mb-3 space-x-2">
+                <button id="showAllBtn" class="px-3 py-1 bg-amber-500 text-white rounded hover:bg-amber-600 transition duration-150 text-sm">显示全部</button>
+                <button id="showDay1Btn" class="px-3 py-1 bg-orange-500 text-white rounded hover:bg-orange-600 transition duration-150 text-sm">第 1 天</button>
+                <button id="showDay2Btn" class="px-3 py-1 bg-lime-600 text-white rounded hover:bg-lime-700 transition duration-150 text-sm">第 2 天</button>
+                <button id="showDay3Btn" class="px-3 py-1 bg-sky-600 text-white rounded hover:bg-sky-700 transition duration-150 text-sm">第 3 天</button>
+            </div>
+            <div id="mapContainer" class="map-container"></div>
+            <div id="mapLog" class="text-xs text-gray-500 mt-1">地图加载日志:</div>
+        </div>
+
+        <div class="space-y-8">
+
+            <div class="day-card p-5 rounded-lg">
+                <h2 class="text-xl font-bold mb-4 pb-2">第0晚：4月29日 (星期二) - 出发前往郑州</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-regular fa-clock w-5 mr-2 text-amber-600"></i>行程安排</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>18:00后：从成都出发</li>
+                            <li>抵达后前往全季酒店（郑州花园路农业路）</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-cloud-sun w-5 mr-2 text-amber-600"></i>天气与穿衣 (抵达郑州时)</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li><strong>天气:</strong> 夜间约15-18°C <em class="text-xs">(行前查询)</em></li>
+                            <li><strong>穿衣:</strong> 舒适长裤、T恤+外套</li>
+                        </ul>
+                    </div>
+                    <div class="info-section md:col-span-2">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-route w-5 mr-2 text-amber-600"></i>交通方式</h3>
+                         <ul class="ml-1 space-y-1 text-sm">
+                            <li><i class="fa-solid fa-plane w-4 mr-1 text-gray-500"></i> 成都天府 (TFU) -> 郑州新郑 (CGO): 国航CA2773 (19:00-20:50)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 机场 -> 酒店: 打车 (约40-50分钟) / <i class="fa-solid fa-subway w-4 mr-1 text-gray-500"></i> 地铁 (90分钟)</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-utensils w-5 mr-2 text-amber-600"></i>餐饮安排</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>晚餐: 成都解决或交通工具上 (需自备)</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-bed w-5 mr-2 text-amber-600"></i>住宿</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>全季酒店（郑州花园路农业路）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card p-5 rounded-lg">
+                <h2 class="text-xl font-bold mb-4 pb-2">第1天：4月30日 (星期三) - 郑州 & 前往开封</h2>
+
+                 <div class="travel-journal my-4">
+                    <div class="journal-header">
+                        <h3>📔 郑州手帐</h3>
+                        <span class="journal-date">4/30</span>
+                    </div>
+                    <div class="journal-grid">
+                        <img src="./images/day1_journal.png" alt="郑州手帐：河南博物院参观笔记、二七广场速写"
+                            class="journal-image" loading="lazy" onerror="this.src='https://placehold.co/400x300/f0e6d6/7a5c50?text=图片加载失败'">
+                        <div class="journal-desc">
+                            <div class="journal-section"><h4>🏛 文化印记</h4><ul><li><strong>河南博物院必看：</strong>贾湖骨笛(1楼)、妇好鸮尊(2楼)、云纹铜禁(4楼)</li><li><strong>冷知识：</strong>每周一闭馆，16:00停止入馆</li><li><strong>盖章点：</strong>1楼文创店有6个免费章</li></ul></div>
+                            <div class="journal-section"><h4>📸 摄影指南</h4><ul><li><strong>大玉米楼：</strong>19:30亮灯后拍摄效果最佳，建议使用广角镜头</li><li><strong>二七塔：</strong>东南角花坛前是经典机位</li><li><strong>参数建议：</strong>夜景模式 ISO800-1600 f/2.8 1/30s</li></ul></div>
+                            <div class="journal-section"><h4>🍽 美食日志</h4><ul><li><strong>方中山胡辣汤：</strong><span class="spicy-level">🌶️🌶️🌶️ (中辣)</span> 配油馍头比油条更地道</li><li><strong>午餐推荐：</strong>合记烩面(人民路店) 三鲜口味最受欢迎</li><li><strong>避雷提示：</strong>景区内"开封小吃"不正宗</li></ul></div>
+                            <div class="journal-section tips"><h4>💡 实用贴士</h4><p>「地铁2号线关虎屯站C口出，向西步行300米即到博物院，比打车更快」</p><p>「大玉米58楼观光厅需购票(¥68)，不如在如意湖畔免费观赏」</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="info-section md:col-span-2">
+                        <h3 class="font-semibold flex items-center"><i class="fa-regular fa-clock w-5 mr-2 text-amber-600"></i>行程安排</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li><strong>上午:</strong> 酒店早餐 -> 步行至河南博物院 (09:00-12:00) <strong class="text-red-500">(需提前5天预约)</strong></li>
+                            <li><strong>中午:</strong> 取行李 -> 地铁至二七广场 -> 午餐 (13:15-14:30) -> 逛二七广场 (14:30-15:00)</li>
+                            <li><strong>下午:</strong> 地铁至千玺广场 (大玉米) -> 地铁至郑州东站 (15:50-16:20)</li>
+                            <li><strong>傍晚:</strong> 高铁 郑州东 -> 宋城路 (16:47-17:14) -> 打车至汉庭酒店 (清明上河园店)</li>
+                            <li><strong>晚上:</strong> 清明上河园 (晚餐园内解决) <strong class="text-red-500">(提前购票&看节目表)</strong></li>
+                            <li><i class="fa-solid fa-suitcase w-4 mr-1 text-gray-500"></i> 行李寄存: 全季酒店</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-cloud-sun w-5 mr-2 text-amber-600"></i>天气与穿衣</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li><strong>天气:</strong> 晴间多云, 16°C-28°C <em class="text-xs">(行前查询)</em></li>
+                            <li><strong>穿衣:</strong> T恤/薄长袖, 轻薄外套/防晒衣, 舒适鞋, 帽/太阳镜</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-route w-5 mr-2 text-amber-600"></i>景点间交通</h3>
+                         <ul class="ml-1 space-y-1 text-sm">
+                            <li><i class="fa-solid fa-person-walking w-4 mr-1 text-gray-500"></i> 酒店 <-> 河南博物院 (15分钟)</li>
+                            <li><i class="fa-solid fa-subway w-4 mr-1 text-gray-500"></i> 酒店 -> 二七广场 (30分钟)</li>
+                            <li><i class="fa-solid fa-subway w-4 mr-1 text-gray-500"></i> 二七广场 -> 大玉米 (25分钟)</li>
+                            <li><i class="fa-solid fa-subway w-4 mr-1 text-gray-500"></i> 大玉米 -> 郑州东站 (30分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 宋城路站 -> 酒店 (30分钟)</li>
+                            <li><i class="fa-solid fa-person-walking w-4 mr-1 text-gray-500"></i> 酒店 <-> 清明上河园 (15分钟)</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-utensils w-5 mr-2 text-amber-600"></i>餐饮安排</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>早餐: 酒店</li>
+                            <li>午餐: 二七广场周边</li>
+                            <li>晚餐: 清明上河园内</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-bed w-5 mr-2 text-amber-600"></i>住宿</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>汉庭酒店（清明上河园店）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card p-5 rounded-lg">
+                 <h2 class="text-xl font-bold mb-4 pb-2">第2天：5月1日 (星期四) - 开封 & 前往洛阳</h2>
+
+                 <div class="travel-journal my-4">
+                     <div class="journal-header">
+                         <h3>📔 开封手帐</h3>
+                         <span class="journal-date">5/1</span>
+                     </div>
+                     <div class="journal-grid">
+                         <img src="./images/day2_journal.png" alt="开封手帐：清明上河园游玩攻略、包公祠印章收集"
+                              class="journal-image" loading="lazy" onerror="this.src='https://placehold.co/400x300/f0e6d6/7a5c50?text=图片加载失败'">
+                         <div class="journal-desc">
+                             <div class="journal-section"><h4>🎭 演出攻略</h4><ul><li><strong>《岳飞枪挑小梁王》：</strong>11:00/15:00两场，提前30分钟占座</li><li><strong>《大宋·东京保卫战》：</strong>特效最佳区域：水面东侧看台</li><li><strong>隐藏表演：</strong>9:00开园时的"包公迎宾"仪式</li></ul></div>
+                             <div class="journal-section"><h4>🏯 景点秘籍</h4><ul><li><strong>清明上河图：</strong>虹桥西北角有张择端雕像打卡点</li><li><strong>开封府：</strong>14:00的"包公断案"表演最精彩</li><li><strong>捷径：</strong>从翰园碑林南门出可避开人流</li></ul></div>
+                             <div class="journal-section"><h4>🍜 味觉地图</h4><ul><li><strong>第一楼灌汤包：</strong>先开窗(咬小口)、再喝汤、后吃皮</li><li><strong>西司夜市：</strong>推荐摊位：张三炒凉粉(¥10)、周记杏仁茶</li><li><strong>必尝特产：</strong>花生糕现做现卖，寺门街最正宗</li></ul></div>
+                             <div class="journal-section tips"><h4>🚶 动线优化</h4><p>「开封府→大相国寺可乘坐人力三轮车(¥15)，体验老城风情」</p><p>「清明上河园夜游票(¥80)17:30入场，性价比高于全日票」</p></div>
+                         </div>
+                     </div>
+                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="info-section md:col-span-2">
+                        <h3 class="font-semibold flex items-center"><i class="fa-regular fa-clock w-5 mr-2 text-amber-600"></i>行程安排</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                             <li><strong>上午:</strong> 酒店早餐 -> 中国翰园碑林 (9:20-11:00) -> 打车至包公祠 (11:20-12:40) -> 打车至开封府</li>
+                             <li><strong>中午:</strong> 午餐 (13:00-13:30, 地点待定)</li>
+                             <li><strong>下午:</strong> 参观开封府 (13:30-14:45) -> 打车至大相国寺 (15:05-15:50)</li>
+                             <li><strong>傍晚:</strong> 打车回酒店取行李 -> 打车至开封北站 -> 高铁 开封北 -> 郑州东 (17:07-17:28) -> (可选)打卡蜜雪冰城大楼 -> 高铁 郑州东 -> 洛阳龙门 (18:36-19:13)</li>
+                             <li><strong>晚上:</strong> 步行至艾尚精品酒店 -> 晚餐 (洛阳老城区或外卖)</li>
+                             <li><i class="fa-solid fa-suitcase w-4 mr-1 text-gray-500"></i> 行李寄存: 汉庭酒店</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-cloud-showers-heavy w-5 mr-2 text-amber-600"></i>天气与穿衣</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li><strong>天气:</strong> 多云转小雨, 17°C-25°C <em class="text-xs">(行前查询)</em></li>
+                            <li><strong>穿衣:</strong> T恤/薄长袖+轻薄外套, 舒适鞋, 带雨具</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-route w-5 mr-2 text-amber-600"></i>景点间交通</h3>
+                         <ul class="ml-1 space-y-1 text-sm">
+                            <li><i class="fa-solid fa-person-walking w-4 mr-1 text-gray-500"></i> 酒店 -> 翰园碑林 (20分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 翰园碑林 -> 包公祠 (20分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 包公祠 -> 开封府 (20分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 开封府 -> 大相国寺 (20分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 大相国寺 -> 酒店 (30分钟)</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-utensils w-5 mr-2 text-amber-600"></i>餐饮安排</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>早餐: 酒店</li>
+                            <li>午餐: 开封府附近 (推荐: 第一楼灌汤包)</li>
+                            <li>晚餐: 洛阳老城区或外卖</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-bed w-5 mr-2 text-amber-600"></i>住宿</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>艾尚精品酒店（洛阳龙门站）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card p-5 rounded-lg">
+                <h2 class="text-xl font-bold mb-4 pb-2">第3天：5月2日 (星期五) - 洛阳 & 返回成都</h2>
+
+                 <div class="travel-journal my-4">
+                    <div class="journal-header">
+                        <h3>📔 洛阳手帐</h3>
+                        <span class="journal-date">5/2</span>
+                    </div>
+                    <div class="journal-grid">
+                        <img src="./images/day3_journal.png" alt="洛阳手帐：龙门石窟游览路线、白马寺异国佛殿图解"
+                             class="journal-image" loading="lazy" onerror="this.src='https://placehold.co/400x300/f0e6d6/7a5c50?text=图片加载失败'">
+                         <div class="journal-desc">
+                            <div class="journal-section"><h4>🗿 石窟指南</h4><ul><li><strong>最佳路线：</strong>西山石窟→漫水桥→东山石窟→香山寺</li><li><strong>必看洞窟：</strong>宾阳三洞(皇室造像)、万佛洞(15000尊小佛)</li><li><strong>摄影时段：</strong>9:00前阳光直射西山佛像面部</li></ul></div>
+                            <div class="journal-section"><h4>⛩ 白马寺要点</h4><ul><li><strong>四国风格：</strong>印度殿→泰国殿→缅甸殿→中国区</li><li><strong>隐藏景点：</strong>狄仁杰墓在寺院东南角</li><li><strong>注意事项：</strong>大雄殿内禁止拍摄</li></ul></div>
+                            <div class="journal-section"><h4>🥘 水席笔记</h4><ul><li><strong>管记水席：</strong>连汤肉片(微酸)、牡丹燕菜(萝卜丝惊艳)</li><li><strong>单人套餐：</strong>建议选8道式(¥68)足够2人分享</li><li><strong>搭配推荐：</strong>配海碧汽水(本地特色)</li></ul></div>
+                            <div class="journal-section tips"><h4>⏳ 时间管理</h4><p>「龙门石窟电瓶车单程¥10，建议西山步行→东山乘车返回」</p><p>「白马寺到龙门站预留1小时车程，15:00必须出发」</p></div>
+                        </div>
+                    </div>
+                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="info-section md:col-span-2">
+                        <h3 class="font-semibold flex items-center"><i class="fa-regular fa-clock w-5 mr-2 text-amber-600"></i>行程安排</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li><strong>上午:</strong> 早餐 (6:50-7:10) -> 打车至龙门石窟 (7:30开园) -> 参观龙门石窟 (7:30-11:00) <strong class="text-red-500">(提前购票)</strong></li>
+                            <li><strong>中午:</strong> 打车至应天门附近 -> 午餐 (11:30-12:30, 水席/洛馍村)</li>
+                            <li><strong>下午:</strong> 打车至白马寺 (13:30-15:00) -> 打车回酒店取行李 (15:00-15:55) -> 步行至洛阳龙门站</li>
+                            <li><strong>傍晚:</strong> 高铁 洛阳龙门 -> 成都东 (16:29-21:55)</li>
+                            <li><i class="fa-solid fa-suitcase w-4 mr-1 text-gray-500"></i> 行李寄存: 艾尚酒店</li>
+                            <li><i class="fa-solid fa-map-signs w-4 mr-1 text-gray-500"></i> 龙门石窟路线: 西山(北->南) -> 漫水桥 -> 礼佛台 -> 电瓶车回西北服务区</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-cloud-rain w-5 mr-2 text-amber-600"></i>天气与穿衣</h3>
+                        <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li><strong>天气:</strong> 小雨转晴, 15°C-26°C <em class="text-xs">(行前查询)</em></li>
+                            <li><strong>穿衣:</strong> 透气T恤+轻便外套, 防滑鞋, 备雨具/防晒</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-route w-5 mr-2 text-amber-600"></i>景点间交通</h3>
+                         <ul class="ml-1 space-y-1 text-sm">
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 酒店 -> 龙门石窟 (20分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 龙门石窟 -> 应天门 (20-30分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 应天门 -> 白马寺 (40分钟)</li>
+                            <li><i class="fa-solid fa-taxi w-4 mr-1 text-gray-500"></i> 白马寺 -> 洛阳龙门站 (45分钟, <strong class="text-red-500">15:00前出发</strong>)</li>
+                         </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-utensils w-5 mr-2 text-amber-600"></i>餐饮安排</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>早餐: 酒店附近 (如: 洛阳汤馆)</li>
+                            <li>午餐: 市区 (水席/浆面条/糊涂面)</li>
+                            <li>晚餐: 高铁上点餐</li>
+                        </ul>
+                    </div>
+                     <div class="info-section">
+                        <h3 class="font-semibold flex items-center"><i class="fa-solid fa-train-subway w-5 mr-2 text-amber-600"></i>返程交通</h3>
+                         <ul class="list-disc list-inside ml-1 space-y-1 text-sm">
+                            <li>高铁: 洛阳龙门 -> 成都东 (16:29-21:55)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div> <hr class="my-8 border-t border-gray-300">
+
+        <div class="important-note-section">
+            <h2 class="text-2xl font-semibold mb-4 pb-2">整体关键注意事项</h2>
+            <div class="space-y-4 text-sm">
+                <div>
+                    <h3 class="font-semibold text-lg mb-2 text-amber-700">1. 时间管理：</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>每天行程预留30%弹性时间。</li>
+                        <li>郑州东/洛阳龙门站提前1小时到，用"铁路12306"看检票口。</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-2 text-amber-700">2. 景区注意：</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>河南博物院避开10-11点高峰，重点看二楼，预约讲解。</li>
+                        <li>龙门石窟早去西山，10点后人多可错峰东山。</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="font-semibold text-lg mb-2 text-amber-700">3. 工具准备：</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>APP: "郑州地铁", "洛易行"</li>
+                        <li>物品: 充电宝(2W mAh), 防晒帽, 折叠伞, 肠胃药, 驱蚊液, 便携风扇, 湿巾</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-lg mt-6 mb-3 text-amber-700">提前预约</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead>
+                        <tr><th>景点名称</th><th>预约方式</th><th>注意事项</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>河南博物院</td><td>公众号"河南博物院"提前5天</td><td>60天内取消3次限制, 主展馆二楼必看</td></tr>
+                        <tr><td>清明上河园</td><td>公众号"清明上河园"购票</td><td>提前3天看演出表, 两大演出必看</td></tr>
+                        <tr><td>龙门石窟</td><td>公众号"龙门石窟"购票</td><td>7:30直奔西山, 10点后人多</td></tr>
+                        <tr><td>白马寺</td><td>公众号"洛阳白马寺"预约</td><td>印度殿拍剪影, 14:00后避开团</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-semibold text-lg mt-6 mb-3 text-amber-700">美食地图</h3>
+             <div class="overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead>
+                        <tr><th>城市</th><th>推荐餐厅</th><th>招牌菜</th><th>错峰时段</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>郑州</td><td>方中山胡辣汤(紫荆山路店)</td><td>胡辣汤+油馍头</td><td>7:00前</td></tr>
+                        <tr><td>开封</td><td>第一楼灌汤包(西司夜市店)</td><td>灌汤包+鲤鱼焙面</td><td>11:30前</td></tr>
+                        <tr><td>洛阳</td><td>管记水席老店(老城区)</td><td>连汤肉片+牡丹燕菜</td><td>17:30前</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mt-6 text-center text-amber-700 font-semibold">祝您河南之行愉快顺利！</p>
+        </div>
+
+    </div> <div id="lightbox">
+        <div class="lightbox-content">
+            <span class="close">&times;</span>
+            <img id="lightbox-img" src="" alt="放大图片">
+            <p id="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // --- Map Initialization ---
+        var map = new AMap.Map('mapContainer', {
+            resizeEnable: true,
+            zoom: 7, // Adjusted zoom for wider overview initially
+            center: [113.5, 34.7] // Center between Zhengzhou, Kaifeng, Luoyang
+        });
+
+        // --- Data Definitions ---
+        // 地点数据，包含坐标和参观时间 (Keep existing data)
+        const day1Locations = [
+            { name: "河南博物院", city: "郑州", title: "Day 1: 河南博物院", position: [113.681, 34.791], stayTime: "3.5小时" },
+            { name: "二七广场", city: "郑州", title: "Day 1: 二七广场", position: [113.665, 34.754], stayTime: "1.5小时" },
+            { name: "千玺广场", city: "郑州", title: "Day 1: 大玉米楼", position: [113.678, 34.748], stayTime: "1.5小时" },
+            { name: "郑州东站", city: "郑州", title: "Day 1: 郑州东站", position: [113.715, 34.749], stayTime: "0.5小时" },
+            { name: "宋城路站", city: "开封", title: "Day 1: 宋城路站", position: [114.346, 34.858], stayTime: "0.5小时" }, // Corrected station name
+            { name: "清明上河园", city: "开封", title: "Day 1: 清明上河园", position: [114.329, 34.807], stayTime: "晚上" } // Added Qingming Garden for Day 1 evening
+        ];
+        const day2Locations = [
+            { name: "中国翰园碑林", city: "开封", title: "Day 2: 翰园碑林", position: [114.326, 34.811], stayTime: "1.5小时" }, // Added Han Yuan
+            { name: "包公祠", city: "开封", title: "Day 2: 包公祠", position: [114.339, 34.786], stayTime: "1.5小时" }, // Added Bao Gong Ci
+            { name: "开封府", city: "开封", title: "Day 2: 开封府", position: [114.341, 34.791], stayTime: "1.5小时" },
+            { name: "大相国寺", city: "开封", title: "Day 2: 大相国寺", position: [114.354, 34.791], stayTime: "1小时" },
+            { name: "开封北站", city: "开封", title: "Day 2: 开封北站", position: [114.346, 34.858], stayTime: "0.5小时" },
+            { name: "郑州东站", city: "郑州", title: "Day 2: 郑州东站 (中转)", position: [113.715, 34.749], stayTime: "0.5小时" }, // Added transfer
+            { name: "洛阳龙门站", city: "洛阳", title: "Day 2: 洛阳龙门站", position: [112.454, 34.618], stayTime: "0.5小时" }
+        ];
+        const day3Locations = [
+            { name: "龙门石窟", city: "洛阳", title: "Day 3: 龙门石窟", position: [112.471, 34.555], stayTime: "3.5小时" },
+            { name: "应天门", city: "洛阳", title: "Day 3: 应天门 (午餐)", position: [112.464, 34.672], stayTime: "1小时" }, // Added Yingtianmen
+            { name: "白马寺", city: "洛阳", title: "Day 3: 白马寺", position: [112.599, 34.723], stayTime: "1.5小时" },
+            { name: "洛阳龙门站", city: "洛阳", title: "Day 3: 洛阳龙门站 (返程)", position: [112.454, 34.618], stayTime: "0.5小时" }
+        ];
+
+        // --- Global Storage for Map Elements ---
+        let day1MapElements = []; // Stores { marker: AMap.Marker, polyline: AMap.Polyline | null }
+        let day2MapElements = [];
+        let day3MapElements = [];
+        let allMapMarkers = []; // Just markers for fitting view
+
+        // --- Utility for logging ---
+        function logToMapDiv(message) {
+            console.log(message); // Also log to console
+            const logDiv = document.getElementById('mapLog');
+            if (logDiv) {
+                const time = new Date().toLocaleTimeString();
+                // Keep only the last few messages to prevent overflow
+                const lines = logDiv.innerHTML.split('<br>');
+                const maxLines = 5;
+                if (lines.length > maxLines) {
+                    logDiv.innerHTML = lines.slice(-maxLines).join('<br>');
+                }
+                logDiv.innerHTML += `<br>[${time}] ${message}`;
+                logDiv.scrollTop = logDiv.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        // --- Core Map Functions ---
+        // Function to create marker (simplified, assumes position exists)
+        function createMarker(locationData) {
+            const lnglat = locationData.position;
+            const marker = new AMap.Marker({
+                position: lnglat,
+                title: `${locationData.name} (${locationData.title})`,
+                // map: map // Don't add to map immediately
+            });
+            marker.on('click', function() {
+                const infoWindow = new AMap.InfoWindow({
+                    content: `<div class="p-2"><h3 class="text-base font-semibold text-amber-800">${locationData.name}</h3><p class="text-sm text-gray-600">${locationData.title}</p><p class="text-sm text-gray-600">建议停留: ${locationData.stayTime}</p></div>`,
+                    offset: new AMap.Pixel(0, -30) // Adjust offset
+                });
+                infoWindow.open(map, marker.getPosition());
+            });
+            logToMapDiv(`Marker object created for ${locationData.name}`);
+            return { lnglat: lnglat, marker: marker };
+        }
+
+        // Function to draw a polyline for a day's route
+        function createPolyline(pathData, color) {
+            const validPoints = pathData.map(p => p.lnglat); // Assumes all data has lnglat
+            if (validPoints.length >= 2) {
+                const polyline = new AMap.Polyline({
+                    path: validPoints,
+                    borderWeight: 2,
+                    strokeColor: color || '#d4a373', // Warm default color
+                    strokeOpacity: 0.9,
+                    strokeWeight: 5,
+                    strokeStyle: "solid",
+                    lineJoin: 'round',
+                    lineCap: 'round',
+                    showDir: true // 显示方向箭头
+                });
+                logToMapDiv(`Polyline object created with ${validPoints.length} points.`);
+                return polyline; // Return the polyline object
+            } else {
+                 logToMapDiv(`Not enough points (${validPoints.length}) to create polyline.`);
+                 return null; // Not enough points
+            }
+        }
+
+        // Process locations for a single day
+        function processDayRoute(locations, color) {
+            const mapElements = [];
+            const processedData = locations.map(loc => createMarker(loc));
+
+            // Add markers to the list
+            processedData.forEach(d => mapElements.push(d.marker));
+            allMapMarkers.push(...processedData.map(d => d.marker)); // Add to global marker list
+
+            // Create polyline
+            const polyline = createPolyline(processedData, color);
+            if (polyline) {
+                mapElements.push(polyline);
+            }
+            return mapElements; // Return markers and polyline
+        }
+
+        // --- Visibility Control Functions ---
+        function hideElements(elementsArray) {
+            if (!elementsArray || elementsArray.length === 0) return;
+            logToMapDiv(`Removing ${elementsArray.length} elements from map.`);
+            try {
+                map.remove(elementsArray); // Remove from map
+            } catch (e) {
+                logToMapDiv(`Error removing elements: ${e}`);
+                console.error("Error removing elements:", e, elementsArray);
+            }
+        }
+
+        function showElements(elementsArray) {
+             if (!elementsArray || elementsArray.length === 0) return;
+            logToMapDiv(`Adding ${elementsArray.length} elements to map.`);
+             try {
+                map.add(elementsArray); // Add elements to map
+            } catch (e) {
+                logToMapDiv(`Error adding elements: ${e}`);
+                console.error("Error adding elements:", e, elementsArray);
+            }
+        }
+
+        function displayRoute(dayNumber) {
+            logToMapDiv(`Displaying route for Day ${dayNumber}`);
+            // Remove all elements first for a clean slate
+            map.remove(day1MapElements);
+            map.remove(day2MapElements);
+            map.remove(day3MapElements);
+
+            let elementsToShow = [];
+            let markersToShow = [];
+
+            if (dayNumber === 1) elementsToShow = day1MapElements;
+            else if (dayNumber === 2) elementsToShow = day2MapElements;
+            else if (dayNumber === 3) elementsToShow = day3MapElements;
+
+            showElements(elementsToShow);
+            markersToShow = elementsToShow.filter(el => el.CLASS_NAME === 'AMap.Marker');
+
+            if (markersToShow.length > 0) {
+                map.setFitView(markersToShow, false, [80, 80, 80, 80], 14); // More padding, allow closer zoom
+                 logToMapDiv(`Adjusted view for Day ${dayNumber}.`);
+            } else {
+                logToMapDiv(`No markers to fit view for Day ${dayNumber}.`);
+            }
+        }
+
+        function displayAllRoutes() {
+            logToMapDiv("Displaying all routes");
+            // Remove all elements first
+            map.remove(day1MapElements);
+            map.remove(day2MapElements);
+            map.remove(day3MapElements);
+
+            // Show all elements
+            showElements(day1MapElements);
+            showElements(day2MapElements);
+            showElements(day3MapElements);
+
+            if (allMapMarkers.length > 0) {
+                map.setFitView(allMapMarkers, false, [60, 60, 60, 60], 12); // Fit all markers
+                logToMapDiv("Adjusted view for all markers.");
+            } else {
+                 logToMapDiv("No markers to fit view for all routes.");
+            }
+        }
+
+        // --- Event Listeners ---
+        function addEventListeners() {
+            document.getElementById('showAllBtn').addEventListener('click', displayAllRoutes);
+            document.getElementById('showDay1Btn').addEventListener('click', () => displayRoute(1));
+            document.getElementById('showDay2Btn').addEventListener('click', () => displayRoute(2));
+            document.getElementById('showDay3Btn').addEventListener('click', () => displayRoute(3));
+            logToMapDiv("Button listeners added.");
+        }
+
+        // --- Lightbox Functionality ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeBtn = lightbox.querySelector('.close');
+
+            document.querySelectorAll('.journal-image').forEach(image => {
+                image.addEventListener('click', function() {
+                    const src = this.getAttribute('src');
+                    const alt = this.getAttribute('alt') || '手帐图片';
+                    if (src && !src.includes('placehold.co')) { // Don't open placeholder
+                        lightboxImg.src = src;
+                        lightboxCaption.textContent = alt;
+                        lightbox.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    } else if (src && src.includes('placehold.co')) {
+                        // Optional: Show a message that the image is a placeholder
+                        console.log("Placeholder image clicked.");
+                    }
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+                lightboxImg.src = ''; // Clear image source
+                lightboxCaption.textContent = '';
+                document.body.style.overflow = 'auto';
+            }
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) { // Click on background only
+                    closeLightbox();
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
+            logToMapDiv("Lightbox listeners added.");
+        });
+
+
+        // --- Main Execution ---
+        function initializeMapFeatures() {
+            try {
+                logToMapDiv("Processing Day 1 route...");
+                day1MapElements = processDayRoute(day1Locations, '#f97316'); // Orange
+
+                logToMapDiv("Processing Day 2 route...");
+                day2MapElements = processDayRoute(day2Locations, '#84cc16'); // Lime
+
+                logToMapDiv("Processing Day 3 route...");
+                day3MapElements = processDayRoute(day3Locations, '#0ea5e9'); // Sky Blue
+
+                logToMapDiv("All route data processed.");
+                addEventListeners(); // Setup buttons
+                displayAllRoutes(); // Show all routes initially
+
+            } catch (error) {
+                console.error("Error initializing map features:", error);
+                logToMapDiv(`FATAL ERROR initializing map features: ${error}`);
+            }
+        }
+
+        // Start processing locations once the map API is ready
+        map.on('complete', function() {
+             logToMapDiv("Map API loaded completely.");
+             // Simplified check, assumes Geocoder loads if map loads
+             logToMapDiv("Starting feature initialization...");
+             initializeMapFeatures();
+        });
+
+    </script>
+</body>
+</html>
